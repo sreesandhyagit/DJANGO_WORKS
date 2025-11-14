@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookHive - Manager Dashboard</title>
+</head>
+<body>
+    <nav>
+        {% comment %} <a href="">Dashboard</a>
+        <a href="/add-author">Add Author</a>
+        <a href="/all-authors">All Authors</a> {% endcomment %}
+
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <a href="{% url 'create_author' %}">Add Author</a>
+        <a href="{% url 'list_authors' %}">All Authors</a>
+
+    </nav>
+
+    <h1>Dashboard - Manager</h1>
+    
+</body>
+</html>
