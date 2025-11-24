@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add - Author</title>
+    <title>Edit - Author</title>
 </head>
 <body>
     <nav>
@@ -11,21 +11,24 @@
         <a href="{% url 'create_author' %}">Add Author</a>
         <a href="{% url 'list_authors' %}">All Authors</a>
     </nav>  
-    <h1>Add -Author</h1>
+    <h1>Edit -Author</h1>
     <div>
-        <form method="post" action="{% url 'create_author' %}" enctype="multipart/form-data">
-            {% csrf_token %}
+        <div>
+            <img src="{{writer.image.url}}">
+        </div>
+        <form method="post" action="{% url 'edit-author' writer.slug %}" enctype="multipart/form-data">
+            {% csrf_token %}            
             <div>
                 <label>Author name : </label>
-                <input type="text" name="author_name">
+                <input type="text" name="author_name" value="{{writer.name}}">
             </div>
             <div>
                 <label>Place : </label>
-                <input type="text" name="place">
+                <input type="text" name="place" value="{{writer.place}}">
             </div>
             <div>
                 <label>Date of birth : </label>
-                <input type="date" name="dob">
+                <input type="date" name="dob" value="{{writer.dob|date:'Y-m-d'}}">
             </div>
             <div>
                 <label>Author Image : </label>
@@ -33,10 +36,10 @@
             </div>
             <div>
                 <label>About :</label><br>
-                <textarea name="about"></textarea>
+                <textarea name="about" >{{writer.about}}</textarea>
             </div>
             <div>
-                <input type="submit" value="Add Author">
+                <input type="submit" value="Save Changes">
             </div>
 
         </form>

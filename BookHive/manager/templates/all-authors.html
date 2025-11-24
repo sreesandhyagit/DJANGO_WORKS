@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All - Authors</title>
+    <link rel="stylesheet" href="{% static 'manager/css/styles.css' %}">
 </head>
 <body>
     <nav>
@@ -11,6 +13,27 @@
         <a href="{% url 'create_author' %}">Add Author</a>
         <a href="{% url 'list_authors' %}">All Authors</a>
     </nav>
-    <h1>All Authors<h1>
+    <h1>All Authors</h1>
+    <main id="list-authors">
+
+        {% comment %} <ul>
+            {% for writter in authors%}
+                <li>{{writter.name}}</li>
+            {% endfor %}
+        </ul> {% endcomment %}
+        <div class="authors-list">
+            {% for writter in authors %}
+                <div class="card">
+                    {% comment %} <img src="{{writter.image_url}}" style="width:100px;height:100px;"> {% endcomment %}
+                    <img src="{{writter.image.url}}">
+                    <h4>{{writter.name}}</h4>
+                    <p>{{writter.place}}</p>
+                    {% comment %} <a href="/author-details/{{writter.id}}">View Details</a>  {% endcomment %}
+                    <a href="{% url 'author-details' writter.slug %}">View Details</a> 
+                </div>                
+            {% endfor %}            
+        </div>
+    </main>
+   
 </body>
 </html>

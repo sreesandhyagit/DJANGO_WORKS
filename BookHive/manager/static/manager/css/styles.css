@@ -1,0 +1,16 @@
+.authors-list{
+    display: flex;
+    gap: 30px;
+    background-color: aliceblue;
+}
+
+.card img{
+    height: 300px;
+    width:200px;
+}
+.card a{
+    text-decoration: none;
+    padding: 6px 5px;
+    background-color: greenyellow;
+    border-radius: 8px;
+}

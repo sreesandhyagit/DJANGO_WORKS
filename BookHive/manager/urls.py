@@ -10,5 +10,8 @@ from manager import views
 urlpatterns=[
     path("",views.managerDashboard,name="dashboard"),
     path("add-author",views.addAuthor,name="create_author"),
-    path("all-authors",views.allAuthors,name="list_authors")
+    path("all-authors",views.allAuthors,name="list_authors"),
+    path("author-details/<slug:link>",views.authorDetails,name="author-details"),
+    path("edit-author/<slug:link>",views.editAuthor,name="edit-author"),
+    path("remove-author/<slug:link>",views.deleteAuthor,name="delete-author")
 ]
