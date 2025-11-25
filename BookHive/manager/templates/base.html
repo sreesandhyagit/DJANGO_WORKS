@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'manager/css/styles.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <a href="{% url 'create_author' %}">Add Author</a>
+        <a href="{% url 'list_authors' %}">All Authors</a>
+    </nav>
+    {% block content %}    
+    {% endblock %}
+</body>
+</html>

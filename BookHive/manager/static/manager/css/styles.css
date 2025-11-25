@@ -1,7 +1,9 @@
 .authors-list{
     display: flex;
-    gap: 30px;
-    background-color: aliceblue;
+    gap: 10px;
+    background-color: rgb(203, 145, 250);
+    padding: 5px 5px 5px 5px;
+    border: 1px;
 }
 
 .card img{

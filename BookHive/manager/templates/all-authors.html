@@ -1,18 +1,9 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All - Authors</title>
-    <link rel="stylesheet" href="{% static 'manager/css/styles.css' %}">
-</head>
-<body>
-    <nav>
-        <a href="{% url 'dashboard' %}">Dashboard</a>
-        <a href="{% url 'create_author' %}">Add Author</a>
-        <a href="{% url 'list_authors' %}">All Authors</a>
-    </nav>
+{% extends "base.html" %}
+
+{% block title %}All Authors{% endblock %}
+
+{% block content %} 
+
     <h1>All Authors</h1>
     <main id="list-authors">
 
@@ -34,6 +25,5 @@
             {% endfor %}            
         </div>
     </main>
-   
-</body>
-</html>
+
+{% endblock %}

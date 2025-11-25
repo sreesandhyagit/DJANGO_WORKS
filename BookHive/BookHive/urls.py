@@ -31,7 +31,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('response/',testResponse),
     path("index/",home),
-    path("",include("manager.urls"))
+    path("manager/",include("manager.urls")),
+    path("",include("credentials.urls"))
     
 ]
 if settings.DEBUG:

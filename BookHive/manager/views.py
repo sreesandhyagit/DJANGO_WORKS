@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from manager.models import Author
+from django.utils.text import slugify
 
 # Create your views here.
 def managerDashboard(request):
@@ -16,7 +17,8 @@ def addAuthor(request):
         # print(name,place,dob,about)
         profile_pic=request.FILES['picture']
         # writter=Author(name=name,place=place,dob=dob,about=about,image=profile_pic).save()
-        writter=Author(name=name,place=place,dob=dob,about=about,image=profile_pic)      
+        link=slugify(name)
+        writter=Author(name=name,place=place,dob=dob,about=about,image=profile_pic,slug=link)      
         writter.save()
         return redirect('list_authors')
     return render(request,"add-author.html")
