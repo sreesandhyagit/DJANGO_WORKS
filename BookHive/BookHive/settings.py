@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import pymysql
+from django.contrib.messages import constants as messages
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,6 +27,7 @@ SECRET_KEY = 'django-insecure-tq6ha&+%9^b0a1r7&s$0k))cc0c_rqlku*2zjb6=j-gk(s#7v^
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
@@ -50,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "credentials.middleware.LoginRequiredMiddleware"
 ]
 
 ROOT_URLCONF = 'BookHive.urls'
@@ -70,7 +74,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'BookHive.wsgi.application'
-
+MESSAGE_TAGS={
+    messages.ERROR:"danger"
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases

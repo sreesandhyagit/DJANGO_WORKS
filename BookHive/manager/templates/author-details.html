@@ -4,6 +4,12 @@
 
 {% block content %} 
 
+    {% for msg in messages %}
+        <div class="alert alert-{{msg.tags}}" role="alert">
+            {{msg}}
+        </div>
+    {% endfor %}
+
     <h1>Author Details</h1> 
     <div>
         <div>                
@@ -18,6 +24,28 @@
             <a href="{% url 'delete-author' author.slug %}" onclick="return confirmDelete()">Delete Author</a>
         </div>        
     </div>
+    {% if books %}
+        <section id="author-books">
+            <h1>Related Books</h1>
+            <div class="row list-books p-5">
+                <!-- Books Cards -->
+                    {% for b in books %}
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card">
+                            <img src="{{b.image.url}}" style="height: 300px;">
+                            <div>
+                                <h3>{{b.book}}</h3>
+                            </div>
+                            <a href="{{b.get_absolute_url}}">View Details</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                <!-- Books Card End -->
+                </div>
+            </section>
+    {% else %}
+            <p>No books found</p>
+    {% endif %}
     <script>
         function confirmDelete(){
             let choice=confirm("Do you wish to delete {{author.name}} ?")

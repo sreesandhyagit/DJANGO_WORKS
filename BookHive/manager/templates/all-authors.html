@@ -5,6 +5,13 @@
 {% block content %} 
 
     <h1>All Authors</h1>
+
+    {% for msg in messages %}
+        <div class="alert alert-{{msg.tags}}" role="alert">
+            {{msg}}
+        </div>
+    {% endfor %}
+
     <main id="list-authors">
 
         {% comment %} <ul>
@@ -20,7 +27,8 @@
                     <h4>{{writter.name}}</h4>
                     <p>{{writter.place}}</p>
                     {% comment %} <a href="/author-details/{{writter.id}}">View Details</a>  {% endcomment %}
-                    <a href="{% url 'author-details' writter.slug %}">View Details</a> 
+                    {% comment %} <a href="{% url 'author-details' writter.slug %}">View Details</a>  {% endcomment %}
+                    <a href="{{writter.get_absolute_url}}">View Details</a> 
                 </div>                
             {% endfor %}            
         </div>

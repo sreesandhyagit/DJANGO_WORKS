@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}All Authors{% endblock %}
+
+{% block content %} 
+
+    <h1>All Books</h1>
+
+    {% for msg in messages %}
+        <div class="alert alert-{{msg.tags}}" role="alert">
+            {{msg}}
+        </div>
+    {% endfor %}
+
+    <main>
+        <div class="row list-books p-5">
+        <!-- Books Cards -->
+        
+            {% for b in books %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3"> 
+                    <div class="card">
+                        <img src="{{b.image.url}}" style="height:300px">
+                        <div>
+                            <h3>{{b.book}}</h3>
+                        </div>  
+                        {% comment %} <a href="{% url 'book-details' b.slug %}">View Details</a>  {% endcomment %}
+                        <a href="{{b.get_absolute_url}}">View Details</a> 
+                    </div>
+                </div>                
+            {% endfor %}   
+        <!--Book Cards End-->         
+        </div>
+    </main>
+
+{% endblock %}

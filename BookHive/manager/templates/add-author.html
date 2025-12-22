@@ -5,6 +5,13 @@
 {% block content %}   
 
     <h1>Add - Author</h1>
+    
+    {% for msg in messages %}
+        <div class="alert alert-{{msg.tags}}" role="alert">
+            {{msg}}
+        </div>
+    {% endfor %}
+    
     <div>
         <form method="post" action="{% url 'create_author' %}" enctype="multipart/form-data">
             {% csrf_token %}
